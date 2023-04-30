@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+<main>
+  <div class="album py-3 bg-light">
+    <div class="container">
+      <h3><span class="text-danger">{{album.title}}</span> Video List </h3>
+      <div class="row">
+        {% if data %}
+        {% for video in data %}
+        <div class="col-sm-4">
+          <div class="card m-2">
+            <video class="embed-responsive embed-responsive-16by9" controls="controls" width="320" height="240" <source src="{{video.video.url}}" type="video/mp4"/></video>
+            <div class="card-footer">
+              <p class="card-text"><a href="#">{{video.caption}}</a></p><small class="text-muted">{{video.date}}</small>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock %}
+

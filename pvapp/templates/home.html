@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block content %}
+<main>
+  <div class="album py-5 bg-light">
+    <div class="container">
+      <div class="row">
+        {% if data %}
+        {% for album in data %}
+        <div class="col-sm-4">
+          <div class="card m-2">
+            <a href="#"><img src="{{album.album_image.url}}" alt="" class="card-img-top" height="200px"/><a href="#">
+            <div class="card-body">
+              <p class="card-text"><a href="#">{{album.title}}</a></p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <a href="{% url 'photos' album.id %}" class="btn btn-outline-primary">View Photos</a>
+                  <a href="{% url 'videos' album.id %}" class="btn btn-outline-primary">View Videos</a>
+                </div>
+                
+              </div><br>
+              <div class="card-footer">
+                <h7>{{album.user}}</h7>
+                <small class="text-muted">{{album.date}}</small><br>
+              </div>
+
+              
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+ </main>
+{% endblock %}
+ 
